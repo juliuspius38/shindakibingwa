@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shinda Kibingwa — Smart Betslips</title>
+<meta name="theme-color" content="#1f3bff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Shinda Kibingwa">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231f3bff'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%23fff'%3ES%3C/text%3E%3Ccircle cx='50' cy='14' r='7' fill='%23ff6b2c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1f3bff;--bd:#1428c8;--navy:#0e1530;--bg:#eef1f8;--or:#ff6b2c;--mint:#12a373;--mut:#667091;--line:#dde2f0;--red:#d93a4a;--field:#f4f6fc}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--navy);font-family:'Manrope',system-ui,sans-serif;font-size:15.5px;line-height:1.5}
+body{overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0}
+h1,h2,h3,.logo,.amt{font-family:'Bricolage Grotesque','Manrope',sans-serif}
+.wrap{width:min(1020px,92vw);margin:auto}
+.logo{font-weight:800;font-size:23px;letter-spacing:-.03em;color:var(--blue)}.logo b{color:var(--or);font-weight:800}
+.pill{border-radius:12px;padding:10px 18px;font-weight:700;font-size:14.5px}
+.pill:active,.buy:active,.btn:active{transform:scale(.98)}
+.lime{background:var(--or);color:#fff;font-size:16px;padding:14px 26px;box-shadow:0 8px 20px rgba(255,107,44,.35)}.lime:hover{background:#f25d1c}
+.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}.ghost:hover{background:var(--blue);color:#fff}
+#land{height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.hd{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.hero{background:var(--blue);color:#fff;text-align:center;padding:64px 0 90px;border-radius:0 0 44px 44px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero::before{width:380px;height:380px;left:-120px;top:-160px}.hero::after{width:300px;height:300px;right:-90px;bottom:-130px}
+.hero .wrap{position:relative;z-index:1}
+.kick{display:inline-block;background:rgba(255,255,255,.16);font-weight:700;font-size:13px;padding:6px 14px;border-radius:99px;margin-bottom:20px}
+.hero h1{margin:0;font-size:clamp(52px,11vw,104px);line-height:.95;font-weight:800;letter-spacing:-.045em}
+.hero p{max-width:480px;margin:20px auto 30px;color:rgba(255,255,255,.85);font-size:17px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:-48px 0 12px;position:relative;z-index:2}
+.how div{background:#fff;border-radius:18px;padding:20px;box-shadow:0 10px 30px rgba(20,30,90,.1)}
+.how b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--or);color:#fff;font-size:14px;margin-bottom:10px}
+.how h3{margin:0 0 4px;font-size:18px}.how p{margin:0;color:var(--mut);font-size:14px}
+.sec{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:34px 0 16px}
+.sec h2{margin:0;font-size:28px;letter-spacing:-.03em}.sec small{color:var(--mut);font-size:13.5px}
+.feed{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;max-width:760px;margin-inline:auto}
+.card{background:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(20,30,90,.06),0 10px 28px rgba(20,30,90,.07)}
+.card h3{margin:0;font-size:22px;line-height:1.2;letter-spacing:-.02em}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{font-weight:800;font-size:11px;letter-spacing:.07em;padding:5px 10px;border-radius:99px;text-transform:uppercase}
+.tag.free{background:#dff5ec;color:#0b7a56}.tag.vip{background:#ffe9dd;color:#c4470f}.tag.ok{background:var(--mint);color:#fff}.tag.adm{background:var(--navy);color:#fff}
+.cd{font-size:12.5px;color:var(--mut);font-weight:600;font-variant-numeric:tabular-nums}
+.cd::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:6px}.cd.u{color:var(--red)}.cd.u::before{background:var(--red)}
+.box{position:relative;background:var(--field);border-radius:14px;padding:14px 62px 14px 14px}
+.cp{position:absolute;top:10px;right:10px;padding:5px 10px;border-radius:8px;background:#fff;font-size:12px;font-weight:700;color:var(--blue);box-shadow:0 1px 3px rgba(20,30,90,.15)}.cp.d{background:var(--mint);color:#fff}
+.tx{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.lock{border-radius:14px;padding:20px;text-align:center;background:linear-gradient(180deg,#eef1ff,#e4e9ff)}
+.lock .bl{display:grid;gap:8px;margin-bottom:14px}.lock .bl i{height:9px;border-radius:5px;background:#c9d1ff}.lock .bl i:nth-child(2){width:80%}.lock .bl i:nth-child(3){width:55%}
+.lock span{display:inline-block;background:var(--navy);color:#fff;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:99px;margin-bottom:8px}
+.lock p{margin:0;color:var(--mut);font-size:14px}
+.buy{background:var(--or);color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:14px;box-shadow:0 8px 18px rgba(255,107,44,.3)}
+.safe{text-align:center;color:var(--mut);font-size:12px}
+.del{background:#fff0f1;color:var(--red);padding:11px;border-radius:12px;font-weight:700;font-size:13.5px}.del:hover{background:var(--red);color:#fff}
+.empty{text-align:center;background:#fff;border-radius:20px;padding:44px 20px;color:var(--mut)}
+.sk{height:270px;border-radius:20px;background:linear-gradient(100deg,#e2e7f4 30%,#f3f5fb 50%,#e2e7f4 70%);background-size:220% 100%;animation:sh 1.3s infinite}@keyframes sh{to{background-position:-40% 0}}
+.foot{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:28px 0 34px;color:var(--mut);font-size:13px}
+.foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}.foot .fine{margin-top:14px;display:block;font-size:12.5px}
+.fl{display:flex;gap:22px}.foot .lk{color:var(--mut);text-decoration:none;font-size:13px}.foot .lk:hover{color:var(--blue)}
+#auth{position:fixed;inset:0;display:none;align-items:stretch;overflow:auto;background:#fff;z-index:60}
+.back{position:absolute;top:calc(14px + env(safe-area-inset-top));left:14px;width:40px;height:40px;border-radius:12px;background:var(--field);color:var(--navy);font-size:19px;z-index:3}
+.acard{width:min(400px,100%);margin:auto;padding:70px 24px 30px}
+.acard .logo{font-size:28px;margin-bottom:22px}
+.seg{display:flex;gap:22px;border-bottom:1.5px solid var(--line);margin-bottom:22px}
+.seg button{background:none;color:var(--mut);padding:10px 0;font-weight:700;font-size:15px;border-bottom:3px solid transparent;margin-bottom:-1.5px}.seg .on{color:var(--blue);border-bottom-color:var(--blue)}
+.acard h1{margin:0;font-size:32px;letter-spacing:-.03em}.acard>p{color:var(--mut);margin:4px 0 16px}
+.f{margin:14px 0}.f label{display:block;font-size:12px;color:var(--mut);font-weight:700;margin-bottom:6px;letter-spacing:.05em}
+.f input,.f select,.f textarea{width:100%;padding:13px 14px;background:var(--field);border:1.5px solid transparent;border-radius:12px;outline:none}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--blue);background:#fff}.f input.bad{border-color:var(--red)}
+.fe{display:none;color:var(--red);font-size:13px;margin-top:5px}.fe.s{display:block}
+.fg{text-align:right;margin:-4px 0 14px}
+.lk{background:none;color:var(--blue);font-weight:700;font-size:13.5px;padding:0}
+.btn{width:100%;padding:14px;border-radius:12px;background:var(--blue);color:#fff;font-weight:800;font-size:16px;box-shadow:0 8px 20px rgba(31,59,255,.3)}.btn:hover{background:var(--bd)}.btn:disabled{opacity:.55;cursor:not-allowed}
+.m{color:var(--red);font-size:13.5px;font-weight:600}.m:not(:empty){background:#fff0f1;border-radius:12px;padding:11px 14px;margin:10px 0}
+.m.g{color:#0b7a56}.m.g:not(:empty){background:#dff5ec}
+.sw{text-align:center;color:var(--mut);margin-top:16px}.sw button{margin-left:4px}
+.lg{text-align:center;color:var(--mut);font-size:12.5px;margin-top:14px;line-height:1.7}
+.intent{display:none;background:#fff1e8;color:#b8430d;border-radius:12px;padding:11px 14px;margin-bottom:14px;font-size:13.5px;font-weight:600}
+#app{display:none;min-height:100vh}
+.tb{position:fixed;top:0;left:0;right:0;z-index:40;height:calc(58px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 18px 0;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid var(--line)}
+.tb .r{display:flex;gap:12px;align-items:center}.tb .r span{color:var(--mut);font-size:13.5px;font-weight:600}.tb button{padding:7px 14px;font-size:13px}
+.main{width:min(780px,92vw);margin:auto;padding:calc(58px + env(safe-area-inset-top) + 4px) 0 110px}
+.main .feed{max-width:none}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:45;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#fff;border-radius:22px 22px 0 0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(20,30,90,.1)}
+.nav button{background:none;color:var(--mut);padding:11px 4px;border-radius:14px;font-weight:700;font-size:13.5px}
+.nav .on{background:#e9edff;color:var(--blue)}
+.panel{display:none}.panel.on{display:block}
+.adm{background:#fff;border-radius:20px;padding:22px;margin-top:22px;box-shadow:0 10px 28px rgba(20,30,90,.07)}
+.adm h2{margin:0 0 2px;font-size:23px;letter-spacing:-.02em}.adm>p{margin:0 0 8px;color:var(--mut);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 170px;gap:0 14px}.two .w{grid-column:1/-1}
+.hint{display:block;margin-top:5px;color:var(--mut);font-size:12.5px}
+.me{display:flex;gap:16px;align-items:center;background:#fff;border-radius:20px;padding:22px;margin:22px 0 14px;flex-wrap:wrap;box-shadow:0 10px 28px rgba(20,30,90,.07)}
+.av{width:64px;height:64px;border-radius:20px;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px}
+.me h2{margin:0 0 2px;font-size:24px}.me p{margin:0 0 8px;color:var(--mut);font-size:14px}
+.since{background:#fff;border-radius:20px;padding:16px;text-align:center;box-shadow:0 10px 28px rgba(20,30,90,.07)}.since b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;color:var(--blue)}.since small{color:var(--mut)}
+.ov{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:rgba(14,21,48,.6);z-index:100}
+.sheet{position:relative;width:min(470px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:26px 26px 0 0;padding:26px 22px calc(22px + env(safe-area-inset-bottom))}
+.sheet h2{margin:0 40px 6px 0;font-size:26px;letter-spacing:-.03em;line-height:1.1}.sheet .ds{color:var(--mut);font-size:14px;margin:0}
+.x{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--field);font-size:20px}
+.amt{font-size:36px;font-weight:800;color:var(--blue);margin:14px 0 2px;letter-spacing:-.03em}
+#payWait,#payOk,#payBad{display:none;text-align:center;border-radius:16px;padding:24px 16px;margin-top:16px}
+#payWait{background:var(--field)}#payOk{background:#dff5ec;color:#0b7a56;font-weight:700}#payBad{background:#fff0f1;color:var(--red);font-weight:700}
+.spin{width:36px;height:36px;border:4px solid var(--line);border-top-color:var(--blue);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 12px}@keyframes sp{to{transform:rotate(360deg)}}
+#payWait small{display:block;color:var(--mut);margin-top:5px}#payWait .st{color:var(--blue);font-size:13px;font-weight:700;margin-top:10px}
+.dlg{width:min(400px,92vw);margin:auto;border-radius:22px}
+.row{display:flex;gap:10px;margin-top:20px}.row button{flex:1;padding:12px;border-radius:12px;font-weight:700}.row .ghost{color:var(--navy);border-color:var(--line)}
+.lgl{line-height:1.7;font-size:14px;color:var(--mut)}.lgl h3{color:var(--navy);font-size:16px;margin:20px 0 4px}.lgl p{margin:0 0 8px}.lgl ul{margin:0 0 8px 18px;padding:0}.lgl li{margin-bottom:5px}
+#fx{position:fixed;inset:0;pointer-events:none;display:none;z-index:500}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:22px}}
+@media(min-width:900px){
+#auth::before{content:"Shinda\A Kibingwa.";white-space:pre;flex:0 0 46%;display:flex;align-items:flex-end;padding:56px;background:var(--blue);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:64px;line-height:1;letter-spacing:-.04em;border-radius:0 44px 44px 0}
+.back{left:calc(46% + 20px)}
+.tb{right:auto;bottom:0;width:240px;height:auto;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:28px 22px;border-bottom:0;border-right:1px solid var(--line)}
+.tb .r{flex-direction:column;align-items:flex-start}
+.nav{top:100px;bottom:auto;right:auto;width:240px;grid-template-columns:1fr;background:transparent;box-shadow:none;border-radius:0;padding:0 14px}
+.nav button{text-align:left;padding:12px 14px}.nav .on{background:var(--blue);color:#fff}
+.main{margin:0 0 0 260px;width:calc(100% - 300px);max-width:780px;padding:36px 0 60px}
+}
+@media(max-width:700px){.tb .r span{display:none}.two{grid-template-columns:1fr}.hero{padding:44px 0 80px;border-radius:0 0 30px 30px}.how{grid-template-columns:1fr;margin-top:-40px}}
+</style>
+</head>
+<body>
+
+<section id="land">
+<header class="hd"><div class="wrap"><div class="logo">Shinda <b>Kibingwa</b></div><button class="pill ghost" id="goSignin">Sign in</button></div></header>
+<section class="hero"><div class="wrap">
+<span class="kick">New betslips every day</span>
+<h1>Shinda<br>Kibingwa.</h1>
+<p>Match analysis and ready-to-play betslips, written fresh every day. Read the free tips below, or unlock VIP slips in seconds with mobile money.</p>
+<button class="pill lime" id="goView">See today's betslips</button>
+</div></section>
+<div class="wrap">
+<div class="how"><div><b>1</b><h3>Create an account</h3><p>Sign up free in under a minute.</p></div><div><b>2</b><h3>Pick a slip</h3><p>Free tips are open. VIP slips unlock with one payment.</p></div><div><b>3</b><h3>Pay by mobile money</h3><p>Approve the PIN prompt on your phone and the slip appears.</p></div></div>
+<div class="sec"><h2>Free tips</h2><small>Sign in to unlock VIP betslips</small></div>
+<div class="feed" id="homeFeed"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+</div>
+<footer class="foot">
+<div class="wrap"><div class="logo">Shinda <b>Kibingwa</b></div><div class="fl"><button class="lk" id="tc1" type="button">Terms &amp; Conditions</button><button class="lk" id="pv1" type="button">Privacy Policy</button></div></div>
+<div class="wrap fine">&copy; <span id="yr"></span> Shinda Kibingwa. Betting involves risk &mdash; play responsibly. 18+ only.</div>
+</footer>
+</section>
+
+<section id="auth">
+<button class="back" id="back" aria-label="Back">←</button>
+<div class="acard">
+<div class="logo">Shinda <b>Kibingwa</b></div>
+<div class="seg" id="seg"><button class="sg on" data-m="in" type="button">Sign in</button><button class="sg" data-m="up" type="button">Create account</button></div>
+<h1 id="aTitle">Welcome back</h1>
+<p id="aSub">Sign in to continue.</p>
+<div class="intent" id="intent"></div>
+<div class="m" id="aMsg"></div>
+<div class="f" id="nameF" style="display:none"><label>FULL NAME</label><input id="fullName" autocomplete="name" placeholder="Your name"></div>
+<div class="f"><label>EMAIL</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+<div class="f"><label>PASSWORD</label><input id="pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+<div class="fg"><button class="lk" id="forgot" type="button">Forgot password?</button></div>
+<button class="btn" id="go">Sign in</button>
+<p class="sw" id="swap"></p>
+<p class="lg">By continuing you agree to our <button class="lk" id="tc2" type="button">Terms</button> and <button class="lk" id="pv2" type="button">Privacy Policy</button>.</p>
+</div>
+</section>
+
+<section id="app">
+<header class="tb"><div class="logo">Shinda <b>Kibingwa</b></div><div class="r"><span id="uname"></span><button class="pill ghost" id="out">Sign out</button></div></header>
+<nav class="nav"><button class="nb on" data-t="slips">Betslips</button><button class="nb" data-t="mine">My Slips</button><button class="nb" data-t="me">Profile</button></nav>
+<main class="main">
+<div class="panel on" id="p-slips">
+<section class="adm" id="adm" style="display:none">
+<h2>Publish a betslip</h2><p>Set the price, platform and kickoff time — expiry is automatic.</p>
+<div class="two">
+<div class="f"><label>TITLE</label><input id="tTitle" maxlength="160" placeholder="e.g. Sat 15 Aug — 5 Odds Banker"></div>
+<div class="f"><label>PRICE (TSH)</label><input id="tPrice" type="number" min="0" step="1" placeholder="0"></div>
+<div class="f w"><label>PLATFORM</label><select id="tPlat"><option value="betpawa">BetPawa</option><option value="sportybet">SportyBet</option><option value="both">Both (BetPawa &amp; SportyBet)</option></select></div>
+<div class="f w"><label>BET START TIME</label><input id="tStart" type="datetime-local"><small class="hint">The betslip is removed automatically at kickoff.</small></div>
+<div class="f w"><label>BETSLIP / ANALYSIS</label><textarea id="tBody" rows="7" placeholder="Write the analysis or betslip codes here..."></textarea></div>
+</div>
+<button class="btn" id="pub">Publish betslip</button>
+<div class="m g" id="pubMsg"></div>
+</section>
+<div class="sec"><div><h2>All betslips</h2><small>Tips &amp; analysis</small></div><button class="pill ghost" id="refresh">Refresh</button></div>
+<div class="feed" id="feed"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+</div>
+<div class="panel" id="p-mine">
+<div class="sec"><div><h2>My slips</h2><small>Betslips you've paid for</small></div></div>
+<div class="feed" id="mine"></div>
+</div>
+<div class="panel" id="p-me">
+<div class="me"><div class="av" id="avatar">--</div><div><h2 id="pName">—</h2><p id="pEmail">—</p><span class="tag adm" id="pRole">MEMBER</span></div></div>
+<div class="since"><b id="pSince">—</b><small>Member since</small></div>
+<section class="adm" style="border-color:var(--line)"><h2>Edit profile</h2><p>Update your display name.</p>
+<div class="f"><label>FULL NAME</label><input id="nameIn" placeholder="Your name"></div>
+<button class="btn" id="saveName">Save changes</button><div class="m g" id="meMsg"></div></section>
+</div>
+</main>
+</section>
+
+<div class="ov" id="payOv"><div class="sheet">
+<button class="x" id="payX">×</button>
+<h2 id="payTitle">Unlock betslip</h2>
+<p class="ds">Complete the payment below. Once confirmed, your betslip unlocks automatically.</p>
+<div class="amt" id="payAmt"></div>
+<div id="payForm">
+<div class="f"><label>NAME</label><input id="pn" placeholder="Your full name"><div class="fe" id="pnErr">Enter two names, e.g. JOHN DOE</div></div>
+<div class="f"><label>EMAIL</label><input id="pe" type="email" placeholder="you@example.com"></div>
+<div class="f"><label>PHONE NUMBER</label><input id="pp" type="tel" placeholder="07XXXXXXXX"></div>
+<button class="btn" id="payGo">Pay now</button>
+</div>
+<div class="wait" id="payWait"><div class="spin"></div><strong>Waiting for payment...</strong><small>Ingiza PIN kwenye simu yako kukamilisha</small><div class="st" id="waitTxt">Checking payment status...</div><button class="lk" id="waitHide" type="button" style="margin-top:14px">Hide and keep checking</button></div>
+<div class="ok" id="payOk">Payment completed<br><small>Unlocking your betslip...</small></div>
+<div class="bad" id="payBad">Payment failed<br><small>Wrong PIN, cancelled or declined. Please try again.</small></div>
+<div class="m" id="payMsg"></div>
+</div></div>
+
+<div class="ov" id="delOv"><div class="sheet dlg"><h2 style="margin:0 0 8px">Delete betslip?</h2><p class="ds">This betslip will be permanently removed. This cannot be undone.</p><div class="row"><button class="ghost" id="delNo">Cancel</button><button class="del" id="delYes" style="background:var(--red);color:#fff">Delete</button></div></div></div>
+
+<div class="ov" id="tcOv"><div class="sheet"><button class="x" id="tcX">×</button><h2>Terms &amp; Conditions</h2><p class="ds">Last updated: 16 October 2026</p>
+<div class="lgl">
+<h3>1. About these terms</h3><p>These terms are the agreement between you and Shinda Kibingwa ("we", "us"). By opening an account, buying a betslip or otherwise using the website, you accept them. If you do not accept them, please do not use the site.</p>
+<h3>2. What we are</h3><p>Shinda Kibingwa is an information service. We write match analysis and betslips that you can read and use as a guide. We are not a bookmaker, we do not take bets or hold your betting money, and we cannot place a bet for you. Any bet you place on another platform is your own decision.</p>
+<h3>3. Who can use the site</h3><p>You must be at least 18 years old. You are responsible for checking that using betting information is allowed where you live.</p>
+<h3>4. Your account</h3><p>Give us a real name and email address and choose a password nobody else knows. Anything done through your account is treated as done by you, so tell us quickly if you think someone else has got into it.</p>
+<h3>5. Buying a betslip</h3>
+<ul><li>Prices are in Tanzanian Shillings (TSh) and are shown before you pay.</li><li>Payment is made by mobile money through an outside payment partner. Enter your own phone number correctly and approve the PIN request on your phone.</li><li>When the partner confirms the payment, the betslip opens on your account. Paid slips are listed under My Slips.</li><li>If the money leaves your phone but the slip does not appear, keep the order number shown on screen and contact us.</li></ul>
+<h3>6. When a betslip expires</h3><p>Every betslip has a kickoff time. When that time arrives the slip is taken down and can no longer be opened, including slips you have already paid for. Check the countdown on the card before you buy.</p>
+<h3>7. Refunds</h3><p>A betslip is a digital product that you receive immediately, so payments are not refundable once it has been delivered. We will look at a refund if you were charged twice, or if a fault on our side stopped the slip from reaching you. Send us your order number and we will check it.</p>
+<h3>8. Bet responsibly</h3><p>Betting is a risk and you can lose money. Only stake what you can afford to lose, never chase losses, and do not borrow to bet. If betting is hurting you or someone close to you, please talk to someone you trust or a local support service.</p>
+<h3>9. What you must not do</h3><ul><li>Share, resell, copy or post paid betslips anywhere else.</li><li>Try to see paid content without paying, or interfere with how the site or payments work.</li><li>Use someone else's phone number or account without their permission.</li></ul>
+<h3>10. No promise of results</h3><p>Our tips are opinions based on research. They can be wrong. We do not promise any win, profit or level of accuracy.</p>
+<h3>11. Our responsibility</h3><p>As far as the law allows, we are not responsible for money you lose from bets, for payment delays caused by networks or the payment partner, or for the site being unavailable for reasons we do not control.</p>
+<h3>12. Closing an account</h3><p>You can stop using the site at any time and ask us to delete your account. We can suspend or close an account that breaks these terms, for example through fraud or sharing paid content.</p>
+<h3>13. Changes</h3><p>We may change these terms from time to time. The date at the top shows the latest version. If you keep using the site after a change, you accept the new version.</p>
+<h3>14. Law that applies</h3><p>These terms are governed by the laws of the United Republic of Tanzania.</p>
+<h3>15. Contact</h3><p>Write to support@shindakibingwa.com with any question about these terms or an order.</p>
+</div></div></div>
+<div class="ov" id="pvOv"><div class="sheet"><button class="x" id="pvX">×</button><h2>Privacy Policy</h2><p class="ds">Last updated: 16 October 2026</p>
+<div class="lgl">
+<h3>1. Who we are</h3><p>Shinda Kibingwa runs this website and decides how your personal information is used. This page explains what we collect, why, and the choices you have.</p>
+<h3>2. What we collect</h3>
+<ul><li><b>Account details:</b> your name, email address and password. Passwords are handled by Google Firebase Authentication and we cannot read them.</li><li><b>Purchase records:</b> which betslips you bought, the order number and whether the payment was completed.</li><li><b>Payment details:</b> the name, email and phone number you type at checkout are sent to our payment partner so they can send the PIN request. We never see your mobile money PIN.</li><li><b>Information stored on your device:</b> a small note that lets the site carry on checking a payment if you close the page before it finishes.</li><li><b>Technical data:</b> basic logs such as IP address and browser type that our hosting and Firebase services keep to run and protect the site.</li></ul>
+<h3>3. Why we use it</h3><ul><li>To create your account and keep you signed in.</li><li>To take payment and unlock the betslips you bought.</li><li>To answer your questions and sort out payment problems.</li><li>To prevent fraud and keep the site secure.</li></ul>
+<h3>4. Who we share it with</h3><p>We share data only with the services needed to run the site: Google Firebase (sign-in and database), our hosting provider, and the mobile money payment partner. We do not sell your information. We may disclose it if the law requires us to.</p>
+<h3>5. How long we keep it</h3><p>We keep your account and purchase records while your account is open and for as long as we need them for payment disputes, accounting or legal reasons. After that we delete or anonymise them.</p>
+<h3>6. Your choices</h3><p>You can ask us to show you the information we hold, correct it, or delete your account. You can change your display name yourself under Profile. Send other requests to the email below and we will reply as soon as we can. You can also use any rights you have under Tanzanian data protection law.</p>
+<h3>7. Keeping it safe</h3><p>Your data is stored with Firebase using access rules that stop other users from reading your account or paid slips. No system is perfectly secure, so use a strong password and do not share it.</p>
+<h3>8. Browser storage</h3><p>We use your browser's local storage and sign-in session only to keep you signed in and to resume a pending payment check. We do not use it for advertising.</p>
+<h3>9. Under 18s</h3><p>This site is for adults only. We do not knowingly collect information from anyone under 18, and we will delete it if we find out we have.</p>
+<h3>10. Changes</h3><p>If we change this policy we will update the date above. Please check back from time to time.</p>
+<h3>11. Contact</h3><p>Questions about your data? Email support@shindakibingwa.com.</p>
+</div></div></div>
+
+<canvas id="fx"></canvas>
+
+<script type="module">
+import{initializeApp}from'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
+import{getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,sendPasswordResetEmail,sendEmailVerification,signOut,updateProfile}from'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
+import{getFirestore,doc,setDoc,getDoc,collection,writeBatch,getDocs,deleteDoc,onSnapshot,query,orderBy,limit,serverTimestamp}from'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
+
+const app=initializeApp({apiKey:'AIzaSyABTVL62cJ4IB0WFFLhJnYP6avTfJU61MI',authDomain:'shinda-kibingwa.firebaseapp.com',projectId:'shinda-kibingwa',storageBucket:'shinda-kibingwa.firebasestorage.app',messagingSenderId:'518019728734',appId:'1:518019728734:web:3b54b859aa2f3b257b7bcf',measurementId:'G-Q2NH5DY996'});
+const auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id);
+const sd=(id,v)=>{$(id).style.display=v};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c]));
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const H={'Content-Type':'application/json'};
+const PK='shinda_pending_order';
+const lsGet=()=>{try{return JSON.parse(localStorage.getItem(PK)||'null')}catch(e){return null}};
+const lsSet=o=>{try{localStorage.setItem(PK,JSON.stringify(o))}catch(e){}};
+const lsClr=()=>{try{localStorage.removeItem(PK)}catch(e){}};
+
+let signup=false,user=null,admin=false,stop=null,snap=null,selId=null,sel=null,polling=false,paid=new Set(),paidData=new Map(),secrets=new Map(),delId=null,pendingUnlock=null,activePoll=null,rt=null,authPushed=false,payPushed=false;
+const repaired=new Set();
+const textOf=d=>d.content||d.betslip||d.secret||d.text||'';
+const paidText=(id,p)=>textOf(paidData.get(id)||{})||(p&&p.content)||'';
+const initials=n=>n.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()||'UM';
+
+async function loadPurchases(){
+paid=new Set();paidData=new Map();if(!user)return;
+try{(await getDocs(collection(db,'people',user.uid,'purchases'))).forEach(i=>{const d=i.data();if(d.status==='COMPLETED'){paid.add(i.id);paidData.set(i.id,d)}})}catch(e){console.error('Purchases error:',e)}
+}
+async function repair(){
+if(!user)return;
+const todo=[...paid].filter(id=>{const d=paidData.get(id)||{};return!textOf(d)&&d.orderId&&!repaired.has(d.orderId)});
+if(todo.length){
+await Promise.all(todo.map(async id=>{const o=paidData.get(id).orderId;repaired.add(o);try{await fetch('/api/order-status',{method:'POST',headers:H,body:JSON.stringify({order_id:o})})}catch(e){console.warn('Repair failed',o,e)}}));
+await loadPurchases();
+}
+queue();
+}
+async function delPost(id){await deleteDoc(doc(db,'posts',id));try{await deleteDoc(doc(db,'postSecrets',id))}catch(e){console.error(e)}}
+async function loadSecrets(){
+secrets=new Map();if(!admin)return;
+try{(await getDocs(collection(db,'postSecrets'))).forEach(i=>secrets.set(i.id,i.data().content||''))}catch(e){console.error('Secrets error:',e)}
+}
+function queue(){if(rt)return;rt=setTimeout(()=>{rt=null;render()},50)}
+
+/* ---------- tabs ---------- */
+function tab(t){
+['slips','mine','me'].forEach(k=>$('p-'+k).classList.toggle('on',k===t));
+document.querySelectorAll('.nb').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nb').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+
+/* ---------- countdown ---------- */
+function fmt(ms){
+if(ms<=0)return'Expired';
+const s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60;
+return d>0?`${d}d ${h}h ${m}m left`:h>0?`${h}h ${m}m ${x}s left`:m>0?`${m}m ${x}s left`:`${x}s left`;
+}
+function tick(){
+document.querySelectorAll('.cd[data-exp]').forEach(el=>{
+const left=Number(el.dataset.exp)-Date.now();
+if(left<=0){const c=el.closest('.card'),id=c&&c.dataset.pid;if(c)c.remove();if(admin&&id)delPost(id).catch(console.error);if(!admin)queue();return}
+el.querySelector('b').textContent=fmt(left);el.classList.toggle('u',left<3600000);
+});
+}
+setInterval(tick,1000);
+
+/* ---------- profile ---------- */
+function fillProfile(u,d){
+const n=u.displayName||d?.name||'Member';
+$('avatar').textContent=initials(n);$('pName').textContent=n;$('pEmail').textContent=u.email||'';
+$('pRole').textContent=admin?'ADMIN':'MEMBER';
+$('pSince').textContent=d?.createdAt?.toDate?d.createdAt.toDate().toLocaleDateString():'—';
+$('nameIn').value=n;
+}
+$('saveName').onclick=async()=>{
+if(!user)return;
+const n=$('nameIn').value.trim();
+if(!n){$('meMsg').textContent='Enter your name.';return}
+$('saveName').disabled=true;$('meMsg').textContent='Saving...';
+try{
+await updateProfile(user,{displayName:n});
+await setDoc(doc(db,'people',user.uid),{name:n},{merge:true});
+$('uname').textContent=n;$('pName').textContent=n;$('avatar').textContent=initials(n);$('meMsg').textContent='Profile updated.';
+}catch(e){$('meMsg').textContent=e.message}
+finally{$('saveName').disabled=false}
+};
+
+/* ---------- auth screens ---------- */
+function promptSignIn(text){
+sd('land','none');sd('auth','flex');$('aMsg').textContent='';
+const b=$('intent');
+if(text){b.textContent=text;b.style.display='block'}else b.style.display='none';
+if(!authPushed){try{history.pushState({u:'auth'},'',location.href)}catch(e){}authPushed=true}
+}
+$('back').onclick=()=>{
+sd('auth','none');sd('land','block');pendingUnlock=null;
+if(authPushed){authPushed=false;history.back()}
+};
+addEventListener('popstate',()=>{
+if(payPushed&&$('payOv').style.display==='flex'){polling=false;payPushed=false;sd('payOv','none');sd('payForm','block');$('payGo').disabled=false;return}
+if(authPushed&&$('auth').style.display==='flex'){authPushed=false;sd('auth','none');sd('land','block');pendingUnlock=null}
+});
+$('goView').onclick=()=>promptSignIn('');
+$('goSignin').onclick=()=>promptSignIn('');
+
+function mode(up){
+signup=up;
+document.querySelectorAll('.sg').forEach(b=>b.classList.toggle('on',(b.dataset.m==='up')===up));
+$('aTitle').textContent=up?'Create your account':'Welcome back';
+$('aSub').textContent=up?'Join Shinda Kibingwa today.':'Sign in to continue.';
+sd('nameF',up?'block':'none');sd('forgot',up?'none':'inline');
+$('go').textContent=up?'Create account':'Sign in';
+$('swap').innerHTML=up?'Already a member? <button class="lk" type="button">Sign in</button>':'New here? <button class="lk" type="button">Create an account</button>';
+}
+mode(false);
+document.querySelectorAll('.sg').forEach(b=>b.onclick=()=>mode(b.dataset.m==='up'));
+$('swap').onclick=e=>{if(e.target.closest('button'))mode(!signup)};
+['fullName','email','pass'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('go').click()}}));
+
+$('go').onclick=async()=>{
+const email=$('email').value.trim(),pw=$('pass').value,name=$('fullName').value.trim();
+if(!email||!pw||(signup&&!name)){$('aMsg').textContent='Please complete all fields.';return}
+$('go').disabled=true;$('go').textContent=signup?'Creating account...':'Signing in...';
+try{
+if(signup){
+const c=await createUserWithEmailAndPassword(auth,email,pw);
+await updateProfile(c.user,{displayName:name});
+try{await sendEmailVerification(c.user)}catch(e){console.log(e)}
+await setDoc(doc(db,'people',c.user.uid),{name,email,role:'user',createdAt:serverTimestamp()});
+openApp(c.user);
+}else{openApp((await signInWithEmailAndPassword(auth,email,pw)).user)}
+}catch(e){
+$('aMsg').textContent=e.code==='auth/invalid-credential'?'Invalid email or password.':e.code==='auth/email-already-in-use'?'Email already exists.':e.message;
+}finally{$('go').disabled=false;$('go').textContent=signup?'Create account':'Sign in'}
+};
+$('forgot').onclick=async()=>{
+const email=$('email').value.trim();
+if(!email){$('aMsg').textContent='Enter your email first.';return}
+try{await sendPasswordResetEmail(auth,email);$('aMsg').textContent='Password reset email sent.'}catch(e){$('aMsg').textContent=e.message}
+};
+
+async function openApp(u){
+user=u;sd('auth','none');authPushed=false;sd('land','none');sd('app','block');
+$('uname').textContent=u.displayName||u.email;
+const s=await getDoc(doc(db,'people',u.uid));
+const d=s.exists()?s.data():{role:'user'};
+admin=d.role==='admin';
+sd('adm',admin?'block':'none');
+fillProfile(u,d);tab('slips');
+await loadPurchases();repair();
+await loadSecrets();
+listen();
+const p=lsGet();
+if(p&&p.uid===u.uid&&!paid.has(p.postId))poll(p.orderId,p.postId);
+if(pendingUnlock&&!admin){const x=pendingUnlock;pendingUnlock=null;if(!paid.has(x.id))openPay(x.id,x.post)}
+}
+$('out').onclick=async()=>{
+polling=false;activePoll=null;
+await signOut(auth);
+user=null;admin=false;paid=new Set();paidData=new Map();secrets=new Map();
+sd('app','none');sd('land','block');render();
+};
+onAuthStateChanged(auth,u=>{if(u)openApp(u)});
+
+/* ---------- publish ---------- */
+$('pub').onclick=async()=>{
+if(!user)return;
+$('pub').disabled=true;$('pubMsg').textContent='';
+try{
+const us=await getDoc(doc(db,'people',user.uid));
+if(!us.exists()||us.data().role!=='admin')throw new Error('You are not an admin.');
+const title=$('tTitle').value.trim(),content=$('tBody').value.trim(),price=Number($('tPrice').value||0),platform=$('tPlat').value,st=$('tStart').value;
+if(!title)throw new Error('Enter a title.');
+if(!content)throw new Error('Enter the betslip / analysis.');
+if(!Number.isFinite(price)||price<0)throw new Error('Enter a valid price.');
+if(!['betpawa','sportybet','both'].includes(platform))throw new Error('Choose a valid platform.');
+if(!st)throw new Error('Enter the bet start time.');
+const exp=new Date(st);
+if(isNaN(exp.getTime()))throw new Error('Enter a valid bet start time.');
+if(exp.getTime()<=Date.now())throw new Error('Bet start time must be in the future.');
+const ref=doc(collection(db,'posts')),isPaid=price>0,b=writeBatch(db);
+b.set(ref,{title,content:isPaid?'':content,price,platform,betStartTime:exp,validityHours:(exp.getTime()-Date.now())/3600000,expiresAt:exp,published:true,authorId:user.uid,authorName:user.displayName||user.email,createdAt:serverTimestamp()});
+if(isPaid)b.set(doc(db,'postSecrets',ref.id),{content});
+await b.commit();
+if(isPaid)secrets.set(ref.id,content);
+['tTitle','tBody','tPrice','tStart'].forEach(i=>$(i).value='');$('tPlat').value='betpawa';
+$('pubMsg').textContent='Betslip published successfully.';
+}catch(e){$('pubMsg').textContent=e.message}
+finally{$('pub').disabled=false}
+};
+
+/* ---------- feed ---------- */
+function listen(){
+if(stop){render();return}
+stop=onSnapshot(query(collection(db,'posts'),orderBy('createdAt','desc'),limit(100)),s=>{snap=s;render()},e=>{
+console.error('Firestore error:',e);
+const m=e.code==='permission-denied'?'Betslips are private right now. Update your Firestore rules to allow public read on "posts".':'Unable to load betslips. ('+esc(e.code||e.message||'unknown')+')';
+['homeFeed','feed','mine'].forEach(i=>$(i).innerHTML=`<div class="empty">${m}</div>`);
+});
+}
+const txt=c=>`<div class="box"><button class="cp" type="button" title="Copy">Copy</button><div class="tx">${esc(c||'')}</div></div>`;
+const delBtn=id=>`<button class="del" data-del="${id}">Delete betslip</button>`;
+
+function render(){
+if(!snap)return;
+const now=Date.now();
+const ms=p=>p.expiresAt?(p.expiresAt.toMillis?p.expiresAt.toMillis():new Date(p.expiresAt).getTime()):0;
+const expired=p=>p.expiresAt&&ms(p)<=now;
+if(admin)snap.docs.filter(d=>expired(d.data())).forEach(d=>delPost(d.id).catch(console.error));
+const docs=snap.docs.filter(d=>d.data().published!==false&&!expired(d.data()));
+const card=d=>{
+const p=d.data(),pr=Number(p.price||0),id=d.id;
+const cd=p.expiresAt?`<span class="cd" data-exp="${ms(p)}"><b>--</b></span>`:'';
+let tag,body,foot='',cls='';
+if(pr<=0){tag='<span class="tag free">FREE TIP</span>';body=txt(p.content);cls='o'}
+else if(admin){tag='<span class="tag adm">ADMIN VIEW</span>';body=txt(secrets.has(id)?secrets.get(id):p.content);cls='o'}
+else if(paid.has(id)){tag='<span class="tag ok">UNLOCKED</span>';body=txt(paidText(id,p)||'Payment confirmed but the betslip text could not load. Tap Refresh or contact support.');cls='o'}
+else{tag='<span class="tag vip">VIP BETSLIP</span>';body='<div class="lock"><div class="bl"><i></i><i></i><i></i></div><span>Locked</span><p>Full analysis, odds &amp; betslip code. Unlock instantly.</p></div>';foot=`<button class="buy" data-id="${id}">Unlock · ${pr.toLocaleString('en-US')} TSh</button><small class="safe">Instant access · Secure mobile money</small>`}
+if(admin)foot+=delBtn(id);
+return`<article class="card ${cls}" data-pid="${id}"><div class="top">${tag}${cd}</div><h3>${esc(p.title||'Untitled')}</h3>${body}${foot}</article>`;
+};
+const mine=docs.filter(d=>Number(d.data().price||0)>0&&paid.has(d.id));
+$('mine').innerHTML=mine.length?mine.map(card).join(''):'<div class="empty">Betslips you pay for will appear here.</div>';
+const html=docs.length?docs.map(card).join(''):'<div class="empty">No betslips have been published yet.</div>';
+$('homeFeed').innerHTML=html;$('feed').innerHTML=html;
+tick();
+}
+
+document.addEventListener('click',async e=>{
+const cp=e.target.closest('.cp');
+if(cp){
+const el=cp.parentElement.querySelector('.tx');if(!el)return;
+const t=el.textContent.trim();
+try{await navigator.clipboard.writeText(t)}catch(err){
+try{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');s.removeAllRanges()}catch(x){return}
+}
+cp.classList.add('d');cp.textContent='Copied';setTimeout(()=>{cp.classList.remove('d');cp.textContent='Copy'},1400);
+return;
+}
+const buy=e.target.closest('.buy');
+if(buy&&snap){
+const pd=snap.docs.find(i=>i.id===buy.dataset.id);if(!pd)return;
+selId=pd.id;sel=pd.data();
+if(!user){pendingUnlock={id:pd.id,post:sel};promptSignIn('Sign in to unlock "'+(sel.title||'this betslip')+'" — you\'ll come right back here.');return}
+openPay(pd.id,sel);return;
+}
+const del=e.target.closest('[data-del]');
+if(del&&admin){delId=del.dataset.del;sd('delOv','flex')}
+});
+$('delNo').onclick=()=>{delId=null;sd('delOv','none')};
+$('delOv').onclick=e=>{if(e.target===$('delOv')){delId=null;sd('delOv','none')}};
+$('delYes').onclick=async()=>{
+if(!admin||!delId)return;
+const id=delId,b=$('delYes');b.disabled=true;b.textContent='Deleting...';
+try{await delPost(id);secrets.delete(id);delId=null;sd('delOv','none')}
+catch(e){console.error(e);alert('Unable to delete: '+e.message)}
+finally{b.disabled=false;b.textContent='Delete'}
+};
+$('refresh').onclick=async()=>{
+const b=$('refresh');b.textContent='Refreshing...';
+await loadPurchases();repair();listen();
+setTimeout(()=>b.textContent='Refresh',700);
+};
+
+/* ---------- legal ---------- */
+$('yr').textContent=new Date().getFullYear();
+[['tc1','tcOv'],['tc2','tcOv'],['pv1','pvOv'],['pv2','pvOv']].forEach(([b,m])=>$(b).onclick=()=>sd(m,'flex'));
+[['tcX','tcOv'],['pvX','pvOv']].forEach(([b,m])=>$(b).onclick=()=>sd(m,'none'));
+['tcOv','pvOv'].forEach(m=>$(m).onclick=e=>{if(e.target===$(m))sd(m,'none')});
+
+/* ---------- payment ---------- */
+function openPay(id,post){
+polling=false;selId=id;sel=post;
+$('payTitle').textContent=post.title||'Unlock betslip';
+$('payAmt').textContent=Number(post.price||0).toLocaleString('en-US')+' TSh';
+$('pn').value=user?.displayName||'';$('pe').value=user?.email||'';$('pp').value='';
+$('payMsg').textContent='';$('pn').classList.remove('bad');$('pnErr').classList.remove('s');
+['payWait','payOk','payBad'].forEach(i=>sd(i,'none'));sd('payForm','block');
+$('payGo').disabled=false;sd('payOv','flex');
+if(!payPushed){try{history.pushState({u:'pay'},'',location.href)}catch(e){}payPushed=true}
+}
+function closePay(){sd('payOv','none');if(payPushed){payPushed=false;history.back()}}
+$('payX').onclick=()=>{if(!polling)closePay()};
+$('waitHide').onclick=()=>{
+polling=false;closePay();sd('payWait','none');sd('payForm','block');$('payGo').disabled=false;
+alert('We will keep checking. If you completed the payment, your betslip will unlock automatically under My Slips.');
+};
+['pn','pe','pp'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('payGo').click()}}));
+const twoNames=v=>(v||'').trim().split(/\s+/).filter(Boolean).length>=2;
+const badName=b=>{$('pn').classList.toggle('bad',b);$('pnErr').classList.toggle('s',b)};
+$('pn').addEventListener('input',()=>{if(twoNames($('pn').value))badName(false)});
+
+$('payGo').onclick=async()=>{
+if(!user||!sel||polling)return;
+const name=$('pn').value.trim(),email=$('pe').value.trim(),phone=$('pp').value.trim(),amount=Number(sel.price||0);
+if(!name||!email||!phone){$('payMsg').textContent='Please complete all fields.';return}
+if(!twoNames(name)){badName(true);$('payMsg').textContent='Enter two names, e.g. JOHN DOE.';return}
+badName(false);
+const dg=phone.replace(/\D/g,'');
+if(!(/^0\d{9}$/.test(dg)||/^255\d{9}$/.test(dg))){$('payMsg').textContent='Enter a valid phone number, e.g. 0712345678.';return}
+if(!amount||amount<=0){$('payMsg').textContent='Invalid payment amount.';return}
+$('payGo').disabled=true;$('payMsg').textContent='Sending payment request...';
+try{
+const tk=await user.getIdToken();
+const r=await fetch('/api/pay',{method:'POST',headers:{...H,Authorization:'Bearer '+tk},body:JSON.stringify({name,email,phone,postId:selId})});
+let res;
+try{res=await r.json()}catch(x){throw new Error('Invalid response from payment server.')}
+if(!r.ok||!res.success)throw new Error(res.message||'Unable to start payment.');
+const oid=res.order_id||res.data?.order_id||res.data?.data?.order_id;
+if(!oid){console.error('Payment response:',res);throw new Error('The payment provider did not return an order ID.')}
+$('payMsg').textContent='';sd('payForm','none');sd('payWait','block');
+$('waitTxt').textContent='Waiting for payment confirmation...';
+polling=true;lsSet({orderId:oid,postId:selId,uid:user.uid});
+poll(oid,selId);
+}catch(e){console.error(e);$('payMsg').textContent=e.message;$('payGo').disabled=false}
+};
+
+const failReason=r=>{const x=r?.message||r?.data?.[0]?.message||r?.data?.data?.[0]?.message||r?.data?.data?.message||r?.reason||'';return x?String(x).trim():''};
+
+async function poll(oid,pid){
+if(activePoll===oid)return;
+activePoll=oid;
+let delay=1000;const deadline=Date.now()+15*60*1000;
+const uiOpen=()=>$('payOv').style.display==='flex'&&selId===pid;
+while(activePoll===oid&&Date.now()<deadline){
+try{
+const r=await fetch('/api/order-status',{method:'POST',headers:H,body:JSON.stringify({order_id:oid})});
+const res=await r.json();
+if(!r.ok)throw new Error(res.message||'Unable to check payment.');
+const st=res.payment_status;
+if(st==='COMPLETED'){
+activePoll=null;polling=false;lsClr();
+await loadPurchases();await repair();
+if(!paid.has(pid)){
+if(uiOpen()){sd('payWait','none');sd('payForm','block');$('payGo').disabled=false;$('payMsg').textContent='Payment received (order '+oid+') but the unlock is delayed. Please contact support with this order number.'}
+render();return;
+}
+if(uiOpen()){
+sd('payWait','none');sd('payOk','block');fx();
+setTimeout(()=>{sd('payOv','none');if(payPushed){payPushed=false;history.back()}sd('payOk','none');sd('payForm','block');$('payGo').disabled=false;render();tab('slips')},900);
+}else render();
+return;
+}
+if(st==='FAILED'){
+activePoll=null;polling=false;lsClr();
+if(uiOpen()){sd('payWait','none');sd('payBad','block');sd('payForm','block');$('payGo').disabled=false;$('payMsg').textContent=failReason(res)}
+return;
+}
+if(uiOpen())$('waitTxt').textContent='Still pending. Complete the PIN request on your phone.';
+}catch(e){console.error('Status check error:',e);if(uiOpen())$('waitTxt').textContent='Still checking payment...'}
+await sleep(delay);delay=Math.min(delay*1.35,5000);
+}
+if(activePoll===oid){
+activePoll=null;polling=false;
+if(uiOpen()){sd('payWait','none');sd('payForm','block');$('payGo').disabled=false;$('payMsg').textContent='Payment not confirmed yet. If you paid, your betslip will unlock automatically next time you open the site.'}
+}
+}
+
+/* ---------- confetti ---------- */
+function fx(){
+const c=$('fx'),x=c.getContext('2d'),w=c.width=innerWidth,h=c.height=innerHeight;
+c.style.display='block';
+const cols=['#1f3bff','#ff6b2c','#12a373','#ffc233','#0e1530'];
+const ps=Array.from({length:120},()=>({x:w/2+(Math.random()-.5)*160,y:h*.45,vx:(Math.random()-.5)*12,vy:-6-Math.random()*10,r:Math.random()*6,s:3+Math.random()*5,c:cols[Math.random()*5|0],l:0}));
+(function t(){
+x.clearRect(0,0,w,h);let a=0;
+ps.forEach(p=>{if(p.l++>110)return;a=1;p.vy+=.35;p.x+=p.vx*.6;p.y+=p.vy*.6;p.r+=.2;x.save();x.globalAlpha=Math.max(0,1-p.l/110);x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s,p.s,p.s*2);x.restore()});
+a?requestAnimationFrame(t):(c.style.display='none');
+})();
+}
+
+listen();
+</script>
+</body>
+</html>
